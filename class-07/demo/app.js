@@ -1,0 +1,1 @@
+// we want to render the same table in the HTML but in JS
