@@ -5,6 +5,7 @@
 
 ## Today's Schedule
 - Announcements
+* attendence
 - Code Review
 - Forms 
 - Events

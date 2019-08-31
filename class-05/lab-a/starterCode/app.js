@@ -29,8 +29,13 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
+<<<<<<< HEAD
   var product = a * b;
   var string = `The product of ${a} and ${b} is ${product}.`;
+=======
+  let product = a * b;
+  let string = `The product of ${a} and ${b} is ${product}.`;
+>>>>>>> 79274b85f7295ce4f51ea032e00460213cb2d1b6
   return [product, string];
 }
 
@@ -136,11 +141,20 @@ var testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
   var product = 1;
+<<<<<<< HEAD
 
   for (var i = 0; i < dynamicArray.length; i++) {
     product = multiply(product,dynamicArray[i])[0];
   }
   return [product,`The numbers ${dynamicArray.join()} have a product of ${product}.`];
+=======
+  for(var i = 0; i<dynamicArray.length; i++){
+    product = multiply(product, dynamicArray[i])[0];
+  }
+  var string = `The numbers ${dynamicArray} have a product of ${product}.`;
+
+  return [product, string];
+>>>>>>> 79274b85f7295ce4f51ea032e00460213cb2d1b6
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
