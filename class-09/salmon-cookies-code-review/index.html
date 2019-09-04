@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Salmon Cookies</title>
+</head>
+<body>
+    <form id="addLocation">
+        <fieldset>
+          <legend>Add a Location</legend>
+
+          <label for='name'>Location Name</label>
+          <input type='text' name='name' required>
+
+          <label for='min'>Minimum Customers Each Hour</label>
+          <input type='number' name='min' required>
+
+          <label for='max'>Maximum Customers Each Hour</label>
+          <input type='number' name='max' required>
+
+          <label for='averageCookieSale'>Average Cookies Sold Per Person</label>
+          <input type='text' name='averageCookieSale' required>
+
+          <button>Submit</button>
+        </fieldset>
+      </form>
+  <table>
+    <tbody id='table'>
+
+    </tbody>
+  </table>
+  <script src="app.js"></script>
+</body>
+</html>

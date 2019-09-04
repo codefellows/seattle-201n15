@@ -1,67 +1,61 @@
-body{
+body {
   width: 960px;
   margin: auto;
-}
-#top-header{
-  background-color: lightgray;
-  text-align: right;
-  height: 20px;
-  width: 100%;
+  margin-top: 10px;
 }
 
-#top-header span{
+main{
+  overflow: auto;
+}
+
+#site-search {
+  border: 1px solid black;
+  float: right;
+  height: 50px;
+  width: 250px;
+  text-align: center;
+  line-height: 50px;
+}
+
+#main-navigation{
+  background: gray;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  line-height: 30px;
+  padding-left: 5px;
+}
+
+main img{
+  margin-bottom: 10px;
+}
+
+#workshop, #speaking-engagements, #services {
+  height: 300px;
+  border: 2px solid black;
+  width: 289px;
+  background: gray;
   padding: 10px;
 }
 
-#bottom-header img{
-  margin: 10px 0 10px 20px;
+#speaking-engagements {
+  margin: 0 10px;
+  float: right;
+}
+
+#workshop {
+  float: right;
+}
+
+#services {
   float: left;
 }
 
-#button-holder{
-  text-align: right;
-}
-
-#button-holder button{
-  margin: 5px;
-  padding: 10px 55px;
-}
-
-nav ul li{
-  display: inline-block;
-  margin-right: 10px;
-  float: right;
-  margin-top: 50px;
-}
-
-#hero-section{
-  margin-bottom: 10px;
-}
-
-#announcements{
-  width: 100%;
-  background-color: lightgray;
-  height: 60px;
-  margin-bottom: 10px;
-}
-
-#x{
-  float: right;
-  margin-right: 10px;
-  border: 1px solid gray;
-  margin-top: 19px;
-}
-
-#words {
-  margin-left: 10px;
-  line-height: 60px;
-}
-
-#gallery img{
-  float: left;
-  margin-right: 10px;
-}
-
-#gallery #last-image{
-  margin-right: 0;
+footer {
+  border: 2px solid black;
+  background: gray;
+  height: 80px;
+  margin-top: 10px;
+  padding: 10px;
 }
