@@ -53,28 +53,22 @@ Locations.prototype.render = function() {
   this.calcCookiesPerHour();
   
   // create a tr
-  var trEl = document.createElement('tr');
-  table.appendChild(trEl);
+  var trEl = addElement('tr', false, table);
+
 
   // need the name
-  var tdEl = document.createElement('td');
-  tdEl.textContent = this.name;
-  trEl.appendChild(tdEl);
+  addElement('td', this.name, trEl);
+
 
   // need cookies sold each hour
   for(var i = 0; i < timeArray.length; i++){
-    tdEl = document.createElement('td');
-    tdEl.textContent = this.cookiesPerHour[i];
-    trEl.appendChild(tdEl);
+    addElement('td', this.cookiesPerHour[i], trEl);
+
   }
 
   // need total for location
-  // create element
-  tdEl = document.createElement('td');
-  // give it content
-  tdEl.textContent = this.totalCookies;
-  // append to the DOM
-  trEl.appendChild(tdEl);
+  addElement('td', this.totalCookies, trEl);
+
 };
 
 //object instances
@@ -93,22 +87,14 @@ function randomNumber(min, max) {
 function renderHeader(){
   console.log('I am running!!!!')
   // need a table row
-  var trEl = document.createElement('tr');
-  table.appendChild(trEl);
+  var trEl = addElement('tr', false, table);
 
   // need an empty cell
-  var tdEl = document.createElement('td');
-  tdEl.textContent = '';
-  trEl.appendChild(tdEl);
+  addElement('td', '', trEl);
 
   // need a loop over the time
   for(var i = 0; i < timeArray.length; i++){
-    // create the element
-    tdEl = document.createElement('td');
-    // fill with content
-    tdEl.textContent = timeArray[i];
-    // appending hours
-    trEl.appendChild(tdEl);
+    addElement('td', timeArray[i], trEl);
   }
 }
 
@@ -127,13 +113,10 @@ function renderTable (){
 
 function renderFooter (){
   // make and add a row to the table
-  var trEl = document.createElement('tr');
-  table.appendChild(trEl);
+  var trEl = addElement('tr', false, table);
 
   // create the first cell with the text content: 'Total Each Hour'
-  var tdEl = document.createElement('td');
-  tdEl.textContent = 'Total Each Hour';
-  trEl.appendChild(tdEl);
+  addElement('td', 'Total Each Hour', trEl);
 
   var totalOfAllTotals = 0;
   // loop through the array of the hours
@@ -143,15 +126,24 @@ function renderFooter (){
       hourlyTotal += storesAll[j].cookiesPerHour[i];
     }
     totalOfAllTotals += hourlyTotal;
-    tdEl = document.createElement('td');
-    tdEl.textContent = hourlyTotal;
-    trEl.appendChild(tdEl);
+    addElement('td', hourlyTotal, trEl);
   }
 
-  tdEl = document.createElement('td');
-  tdEl.textContent = totalOfAllTotals;
-  trEl.appendChild(tdEl);
+  addElement('td', totalOfAllTotals, trEl);
 
+}
+
+// MAGIC FUNCTION////////////////////////////////////
+// when I call this, my element needs to be a string
+function addElement(element, content, parent){
+  var newElement = document.createElement(element);
+  if(content){
+    var newContent = document.createTextNode(content);
+    newElement.appendChild(newContent);
+  }
+
+  parent.appendChild(newElement);
+  return newElement;
 }
 
 function addLocation (event){
