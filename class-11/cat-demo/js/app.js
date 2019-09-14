@@ -1,40 +1,58 @@
 'use strict';
 
-// render two images to the DOM
-var votesRemaining = 10;
+var imageOneEl = document.getElementById('picture1');
+var imageTwoEl = document.getElementById('picture2');
+var containerEl = document.getElementById('picture-container');
 
-var catContainerEl = document.getElementById('cat-container');
+// imageOneEl.src = 'img/boxCat.jpg';
+// imageOneEl.title = 'boxCat';
+// imageOneEl.alt = 'boxCat';
 
-var resultsEl = document.getElementById('results');
+// imageTwoEl.src = 'img/yogaCat.jpg';
+// imageTwoEl.title = 'yogaCat';
+// imageTwoEl.alt = 'yogaCat';
 
-var catOneEl = document.getElementById('cat-one');
-
-var catTwoEl = document.getElementById('cat-two');
-
-// catOneEl.src = 'img/cuddleCats.jpg';
-
-// catOneEl.title = 'cuddleCats';
-// catOneEl.alt = 'cuddleCats';
-
-// catTwoEl.src = 'img/yogaCat.jpg';
-// catTwoEl.title = 'yogaCat';
-// catTwoEl.alt = 'yogaCat';
-
-// now, render two random images to the DOM from an array of images
-
-// make sure they don't repeat
-
-// change the images when they are clicked
-
+// render two random images to the DOM from an array of images
 var allCats = [];
 
 function Cat(name){
-  this.name = name;
-  this.filepath = `img/${name}.jpg`;
+  this.alt = name;
+  this.title = name;
+  this.src = `img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
 
   allCats.push(this);
+}
+
+function imageGenerator(){
+
+  var index = random(allCats.length);
+  
+  imageOneEl.src = allCats[index].src;
+  imageOneEl.alt = allCats[index].alt;
+  imageOneEl.title = allCats[index].title;
+
+  allCats[index].views++;
+
+  var indexTwo = random(allCats.length);
+
+  // as long as indexTwo is the same as index, keep getting a new indexTwo
+  while(indexTwo === index){
+    indexTwo = random(allCats.length);
+  }
+
+  imageTwoEl.src = allCats[indexTwo].src;
+  imageTwoEl.alt = allCats[indexTwo].alt;
+  imageTwoEl.title = allCats[indexTwo].title;
+
+  allCats[indexTwo].views++;
+}
+
+// using code from MDN docs on Math.random()
+// max is the length of the array
+function random(max){
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 new Cat('boxCat');
@@ -46,94 +64,23 @@ new Cat('sleepyCat');
 new Cat('tomatoCat');
 new Cat('yogaCat');
 
-var recentRandomNumbers = [];
-
-function render(){
-
-  var randomIndex = random(0, allCats.length-1);
-
-  while(recentRandomNumbers.includes(randomIndex)){
-    randomIndex = random(0, allCats.length-1);
-  }
-
-  if(recentRandomNumbers.length > 3){
-    recentRandomNumbers.shift();
-  }
-
-  recentRandomNumbers.push(randomIndex);
-
-  allCats[randomIndex].views++;
-
-  catOneEl.src = allCats[randomIndex].filepath;
-  catOneEl.alt = allCats[randomIndex].name;
-  catOneEl.title = allCats[randomIndex].name;
-
-  var randomIndex = random(0, allCats.length-1);
-
-  while(recentRandomNumbers.includes(randomIndex)){
-    randomIndex = random(0, allCats.length-1);
-  }
-
-  if(recentRandomNumbers.length > 3){
-    recentRandomNumbers.shift();
-  }
-
-  allCats[randomIndex].views++;
-
-  catTwoEl.src = allCats[randomIndex].filepath;
-  catTwoEl.alt = allCats[randomIndex].name;
-  catTwoEl.title = allCats[randomIndex].name;
-}
-
-function random(min, max){
-  return Math.floor(Math.random() * (max - min +1) + min);
-}
-
-function renderBestCat(){
-  // create an element
-  // add content
-  // append to the parent
-
-  var bestCat;
-  var temp = 0;
+function handleClick(event){
+  var clickedCat = event.target.title;
 
   for(var i = 0; i < allCats.length; i++){
-    if(allCats[i].votes > temp){
-      temp = allCats[i].votes;
-      bestCat = allCats[i];
-    }
-  }
-
-
-  var h2El = document.createElement('h2');
-  h2El.textContent = `The Best Cat is ${bestCat.name} with ${bestCat.votes} votes.`;
-  resultsEl.appendChild(h2El);
-}
-
-catContainerEl.addEventListener('click', handleClick);
-
-function handleClick(e){
-  var catName = e.target.title;
-
-  if(e.target.id === 'cat-container'){
-    alert('click a cat!');
-  }
-
-  if(votesRemaining === 0){
-    catContainerEl.removeEventListener('click', handleClick);
-    // render the results to the DOM
-    renderBestCat();
-  }
-
-  for(var i = 0; i < allCats.length; i++){
-    if(catName === allCats[i].name){
+    // loop over my allCats array
+    // find the cat instance that has the same name as the cat that was clicked on
+    // increment the votes on that cat
+    if(clickedCat === allCats[i].title){
       allCats[i].votes++;
-      votesRemaining--;
     }
   }
-  render();
+
+  imageGenerator();
 }
 
+containerEl.addEventListener('click', handleClick);
 
-render();
+imageGenerator();
 
+// keep track of how many times an image was clicked on
