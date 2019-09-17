@@ -1,44 +1,38 @@
+'use strict';
+
 var allCats = [];
 
-function Cat(name, age){
+function Cat(name, age, color){
   this.name = name;
   this.age = age;
+  this.color = color;
+
   allCats.push(this);
 }
 
-new Cat('tangerine', 3);
-new Cat('Malaki', 1);
+new Cat('Shaya', 8, 'black');
+new Cat('Tangerine', 4, 'orange');
+new Cat('Kit', 2, 'beige');
 
-console.log('all Cats Array', allCats);
+////////////ORIGINAL CATS/////////
+console.log('the original cats:', allCats);
 
-/////////////////// turn JS into JSON
+/////////STRINGFY/////////////
 
-var stringCats = JSON.stringify(allCats);
+var stringifyedCats = JSON.stringify(allCats);
+console.log('stringified cats', stringifyedCats);
 
-console.log(stringCats);
+///////////STORE IT IN LOCAL STORAGE//////////
 
-/////////////// put it in local storage
+localStorage.setItem('cats', stringifyedCats);
+console.log('my local storage is: ', localStorage);
 
-localStorage.setItem('kittyCat', stringCats);
+/////////////GET ITEMS FROM LOCAL STORAGE/////////
 
-console.log('my local storage is', localStorage);
+var localStorageCats = localStorage.getItem('cats');
+console.log('my cats from local storage', localStorageCats);
 
-////////////// get cats out of storage
+////////////PARSE LOCAL STOARGE ITEMS//////////
 
-var storageCats = localStorage.getItem('kittyCat');
-
-console.log('storage cats:', storageCats);
-
-///////////////// turn back into JS
-
-var returnedCats = JSON.parse(storageCats);
-
-console.log('my returned cats', returnedCats);
-
-
-
-
-
-
-
-
+var parsedCats = JSON.parse(localStorageCats);
+console.log('my parsed cats are:', parsedCats);
