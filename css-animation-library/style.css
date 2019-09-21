@@ -1,0 +1,238 @@
+*{
+  background: beige;
+}
+
+/* flip the card */
+#box-1{
+  background-color: darkgray;
+  border: 2px solid black;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  line-height: 200px;
+  transition: 2s;
+}
+
+#box-1:hover{
+  transform: rotateY(180deg);
+  background-color: blue;
+}
+
+nav{
+  background-color: lightblue;
+}
+
+li{
+  display: inline-block;
+  margin: 20px;
+  border: 2px solid black;
+}
+
+ul{
+  margin: 35px;
+  font-size: 48px;
+  padding: 20px;
+}
+
+ul li:first-child:hover {
+  background: blue;
+  transition: 2s;
+  font-size: 100px;
+}
+
+ul li:first-child:active {
+  transform: skewY(180deg);
+  transition: 1s;
+  border-radius: 50%;
+}
+
+@keyframes bounceIn {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+/* flip */
+ul li:nth-child(2) {
+background-color: gray;
+border: 2px solid black;
+height: 100px;
+width: 75px;
+line-height: 200px;
+transition: 1s;
+animation: colorchange 2s;
+animation: bounceIn 2s ease-in-out;
+}
+ul li:nth-child(2):hover {
+transform: rotateY(180deg);
+}
+
+ul li:nth-child(3){
+  transition: 2s;
+}
+
+ul li:nth-child(3):hover{
+  text-align: center;
+  color: darkseagreen;
+  transform: scale(1.3);
+}
+
+
+li:nth-child(4) {
+  background-color: darkgrey;
+  border: 2px solid black;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  line-height: 200px;
+  transition: 2s;
+  transition-property: width;
+ }
+ li:nth-child(4):hover {
+  transform: matrix(1, 2, 3, 4, 5, 6);
+  transform-origin: 100% 100%;
+  width: 400px;
+  background-color: red;
+ }
+
+
+ li:nth-child(5){
+  background-color: salmonpink;
+  border: 2px solid blue;
+  height: 100px;
+  width: 100px;
+  text-align: left;
+  line-height: 100px;
+  transition: width 5s, height 5s, transform 5s;
+ }
+ li:nth-child(5):hover{
+  transform: skewY(40deg);
+  background-color: black;
+ }
+
+ li:nth-child(6) {
+  background-color: red;
+  border: 2px solid;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  line-height: 200px;
+  transition: 1s;
+ }
+ li:nth-child(6):hover {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  transform: rotate(180deg);
+  background: yellow;
+ } 
+
+li:nth-child(7){
+   background-color : darkgray;
+   border: 2px solid black;
+   height: 200px;
+   width: 200px;
+   text-align: center;
+   line-height: 200px;
+   transition: 2s
+}
+/* li:nth-child(7):hover{
+   transform: rotateX(180deg)
+} */
+li:nth-child(7):hover{
+   transform: skew(20deg);
+   transform: scale()
+}
+
+
+@keyframes moveright
+{
+   from {
+       right: 0;
+   }
+   to {
+       right: 100px;
+   }
+}
+ul li:nth-child(8){
+  position: absolute;
+   animation: moveright 10s 1;
+}
+
+
+li:nth-child(9) {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 2s, height 2s,   transform 2s;
+  transition: width 2s, height 2s, transform 2s;
+ }
+ li:nth-child(9):hover {
+  width: 300px;
+  height: 300px;
+  transform: rotate(180deg);
+  transform: rotate(180deg);
+ }
+
+ li:nth-child(10){
+  background-color: teal;
+  border: 2px double black;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  line-height: 200px;
+  transition: 2s;
+ }
+ li:nth-child(10):hover{
+  transform: matrix(1, -0.3, 0, 1, 0, 0);
+  background-color: yellow;
+ }
+
+ li:nth-child(11) {
+  background-color: darkgray;
+  border: 2px solid black;
+  height: 50px;
+  width: 135px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 36px;
+  transition:
+    1s,
+    background-color 2s,
+    box-shadow 2s;
+ }
+ li:nth-child(11):hover {
+  width: 50px;
+  height: 35px;
+  line-height: 35px;
+  background-color: blue;
+  font-size: 18px;
+  box-shadow: 8px 8px 10px #295;
+ }
+
+ li:nth-child(12) {
+  background-image: url(https://images.unsplash.com/photo-1568160277762-0224a391b5a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2478&q=80);
+  border: 2px solid black;
+  width: 250px;
+  height: 300px;
+  text-align: center;
+  line-height: 200px;
+  transition: 1s;
+  filter: grayscale(1.0);
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+li:nth-child(12):hover{
+  transform: rotateY(180deg);
+  border: 10px solid black;
+  background-color: black;
+  font-size: 100px;
+  filter: none;
+  transform: rotate(-90deg);
+  text-transform: uppercase;
+  height: 300px;
+  transition: 1s all ease-in-out;
+  width: 300px;
+  height: 250px;
+  line-height: 60px;
+}
